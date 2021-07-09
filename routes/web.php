@@ -18,7 +18,7 @@ use App\Http\Controllers\ToDoListController;
 //     return view('welcome');
 // });
 
-Route::get('/', [ToDoListController::class, 'index']);
+// Route::get('/', [ToDoListController::class, 'index']);
 // Or this
 //Route::get('/lists', 'App\Http\Controllers\ListController@index');
 

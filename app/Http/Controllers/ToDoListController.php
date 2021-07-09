@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\ToDoList;
 use Illuminate\Support\Facades\Response;
+use App\Http\Requests\ToDoListRequest;
 
 class ToDoListController extends Controller
 {
@@ -51,12 +52,25 @@ class ToDoListController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\ToDoListRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ToDoListRequest $request)
     {
-        //
+        //validate user's input inside Form Request Class
+        $validatedData = $request->validated();
+        var_dump($validatedData);
+
+        $toDoList = ToDoList::create($validatedData);
+
+        if(!$toDoList) {
+            return response([
+                'error' => 'Internal server error'
+            ], 500);
+        }
+        return response([
+            'toDoList' => $validatedData['title']
+        ], 201);
     }
 
     /**
@@ -84,13 +98,18 @@ class ToDoListController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\ToDoListRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ToDoListRequest $request, $id)
     {
-        //
+        //validate user's input inside Form Request Class
+        $validatedData = $request->validated();
+        
+        return response([
+            'toDoList' => $toDoLists
+        ], 201);
     }
 
     /**
