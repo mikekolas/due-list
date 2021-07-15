@@ -14,12 +14,15 @@ use App\Http\Controllers\ToDoListController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/', [ToDoListController::class, 'index']);
+// Route::get('/', [ToDoListController::class, 'index']);
 // Or this
 //Route::get('/lists', 'App\Http\Controllers\ListController@index');
 
 //Route::resource('/lists', ToDoListController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
