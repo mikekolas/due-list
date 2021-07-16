@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="container-fluid">
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -81,7 +81,7 @@
 
         <div class="row min-vh-100">
             <!-- Left sidebar -->
-            <div class="col-3 col-lg-3 bg-sidebar">
+            <div class="col-3 bg-sidebar">
                 <h1 id="app-name">Due List</h1>
                 <div>
                     <nav class="nav flex-column pt-3 pb-3 border-top">
@@ -99,10 +99,10 @@
                             @endif
                         @else
                             <a class="nav-link {{ Route::is('home') ? 'active' : ''}}" href="#">Active</a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link d-flex align-items-baseline" href="#">
                                 <i class="bi bi-clipboard pr-3"></i>List name
-                                <i class="bi bi-pencil-fill ml-5"></i>
-                                <i class="bi bi-trash pl-3 text-danger"></i>
+                                <i class="bi bi-pencil-fill ml-auto crud-sm"></i>
+                                <i class="bi bi-trash ml-2 text-danger crud-sm"></i>
                             </a>
                             <a class="nav-link {{ Route::is('lists.index') ? 'active' : ''}}" href="{{ route('lists.index') }}">
                                 <i class="bi bi-clipboard-plus pr-3"></i>New list
@@ -127,6 +127,7 @@
                     @endauth
                 </div>
             </div>
+            <!-- Main page -->
             <div class="col bg-light">
                 <main class="py-4">
                     @yield('content')
