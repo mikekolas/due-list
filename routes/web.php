@@ -22,7 +22,7 @@ Route::get('/', function () {
 // Or this
 //Route::get('/lists', 'App\Http\Controllers\ListController@index');
 
-//Route::resource('/lists', ToDoListController::class);
+Route::resource('/lists', ToDoListController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

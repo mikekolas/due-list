@@ -25,17 +25,18 @@ class ToDoListController extends Controller
      */
     public function index()
     {
-        $toDoLists = ToDoList::all();
-        // dd($toDoLists);
-        if (!$toDoLists) {
-            return response([
-                'error' => 'lists not found'
-            ], 404);
-        }
+        // $toDoLists = ToDoList::all();
+        // // dd($toDoLists);
+        // if (!$toDoLists) {
+        //     return response([
+        //         'error' => 'lists not found'
+        //     ], 404);
+        // }
         
-        return response([
-            'data' => $toDoLists
-        ], 200);
+        // return response([
+        //     'data' => $toDoLists
+        // ], 200);
+        return view('lists');
     } 
 
     /**

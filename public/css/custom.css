@@ -1,0 +1,44 @@
+#app-name {
+  background: -webkit-linear-gradient(#00B6FC, #00DDB7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 1.8rem;
+  font-weight: bold;
+}
+
+.bg-sidebar {
+  background-image: linear-gradient(to right,#21264F, #281C39);  
+  padding-right: 0;
+  border-right: 2px solid #ddd;
+}
+
+.nav-link {
+  color: var(--light);
+  padding-left: 1.7rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.nav-link.active {
+  color: #21264F;
+  background-color: var(--light);
+  position: relative;
+  display: flex;
+}
+
+.nav-link:hover, .nav-link.active:hover {
+  color: var(--light);
+  background-image: linear-gradient(to right,#3d4896, #7450a7);
+}
+
+.nav-link.active::before {
+  width: 0.3rem;
+  margin-left: 0.9rem;
+  height: 50%;
+  position: absolute;
+  left: 0; 
+  content: "";
+  border-radius: 8px;
+  background-color: #00B6FC;
+  align-self: center;
+}
