@@ -1,7 +1,7 @@
 {{-- t-crd stands for task card --}}
 <div class="t-crd py-3 px-5">
     <div class="row d-flex align-items-center">
-        <div class="cw-title">{{ $title }}</div>
+        <div class="font-weight-bold">{{ $title }}</div>
         <div class="t-crd-due-date ml-5">{{ $dueDate }}</div>
         <div class="t-crd-actions ml-auto">
             <a href="{{-- route('tasks.update') --}}" id="t-crd-complete" class="px-1">
