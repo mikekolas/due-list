@@ -1,0 +1,159 @@
+/* sidebar size TODO */
+@media (min-width: 576px) {
+  .bg-sidebar {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 768px) {
+  .bg-sidebar {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+  .bg-sidebar {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .bg-sidebar {
+    max-width: 300px;
+  }
+}
+
+#app-name {
+  background: -webkit-linear-gradient(#00B6FC, #00DDB7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 1.8rem;
+  font-weight: bold;
+}
+
+.bg-sidebar {
+  background-image: linear-gradient(to right,#21264F, #281C39);  
+  padding-right: 0;
+  padding-left: 0;
+  border-right: 2px solid #ddd;
+}
+
+.nav-link {
+  color: var(--light);
+  padding-left: 1.7rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.nav-link.active {
+  color: #21264F;
+  background-color: var(--light);
+  position: relative;
+  display: flex;
+}
+
+.nav-link:hover, .nav-link.active:hover {
+  color: var(--light);
+  background-image: linear-gradient(to right,#3d4896, #7450a7);
+}
+
+.nav-link.active::before {
+  width: 0.3rem;
+  margin-left: 0.9rem;
+  height: 50%;
+  position: absolute;
+  left: 0; 
+  content: "";
+  border-radius: 8px;
+  background-color: #00B6FC;
+  align-self: center;
+}
+
+.crud-sm {
+  font-size: 0.85rem;
+}
+
+/* Card component CSS */
+.crd, .crd-wdgt, .t-crd {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+}
+.crd .c-body {
+  padding: 1rem;
+}
+.c-body label {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Card Widget component SS */
+.crd-wdgt {
+  border-radius: 50rem;
+  margin-bottom: 3rem;
+  line-height: 1.2;
+  padding: 1rem 1.5rem;
+}
+
+.crd-wdgt > div {
+  flex-wrap: nowrap;
+}
+
+.cw-dot {
+  font-size: 0.6rem;
+}
+
+.cw-number {
+  color: #adb5bd;
+  font-weight: 400;
+}
+
+.cw-icon {
+  font-size: 2rem;
+}
+
+/* Task Card component CSS */
+
+.t-crd-due-date {
+  font-size: .8rem;
+  font-weight: bold;
+}
+
+.t-crd-actions {
+  font-size: 1.2rem;
+}
+
+.t-crd-actions > a {
+  text-decoration: none;
+}
+
+.t-crd-actions i::before {
+  color: #3d4896;
+}
+
+#t-crd-complete:hover i::before {
+  color: var(--success);
+}
+
+#t-crd-edit:hover i::before {
+  color: var(--orange);
+}
+
+#t-crd-delete:hover i::before {
+  color: var(--danger);
+}
+
+/* Button CSS */
+.dl-btn {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--light);
+  border: none;
+  padding: .75rem;
+  border-radius: .4rem;
+  background-image: linear-gradient(to right,#3d4896, #3d4896);
+}
+
+.dl-btn:hover {
+  background-image: linear-gradient(to right,#3d4896, #7450a7);
+}
