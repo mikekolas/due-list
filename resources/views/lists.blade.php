@@ -44,5 +44,11 @@
             </div>
         </div> --}}
     </div>
+    {{-- Selected list tasks --}}
+    <div class="row mt-5 justify-content-center">
+        <div class="col">
+            <x-task-card title="Taskname" status="1" dueDate="10-07-2021"></x-task-card>
+        </div>
+    </div>
 </div>
 @endsection

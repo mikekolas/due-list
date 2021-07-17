@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md">
-            <x-card action="create"></x-card> {{-- TODO :title --}}
+            <x-card action="create" type="edit"></x-card> {{-- TODO :title --}}
         </div>
         {{-- <div class="col-md-8">
             <div class="card">

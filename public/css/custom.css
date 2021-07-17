@@ -74,7 +74,7 @@
 }
 
 /* Card component CSS */
-.crd, .crd-wdgt {
+.crd, .crd-wdgt, .t-crd {
   background-color: white;
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
@@ -91,23 +91,16 @@
 .crd-wdgt {
   border-radius: 50rem;
   margin-bottom: 3rem;
-  line-height: 1.5;
-}
-
-.cw-body {
+  line-height: 1.2;
   padding: 1rem 1.5rem;
 }
 
-.cw-body > div {
+.crd-wdgt > div {
   flex-wrap: nowrap;
 }
 
 .cw-dot {
   font-size: 0.6rem;
-}
-
-.cw-title {
-  font-weight: bold;
 }
 
 .cw-number {
@@ -117,6 +110,37 @@
 
 .cw-icon {
   font-size: 2rem;
+}
+
+/* Task Card component CSS */
+
+.t-crd-due-date {
+  font-size: .8rem;
+  font-weight: bold;
+}
+
+.t-crd-actions {
+  font-size: 1.2rem;
+}
+
+.t-crd-actions > a {
+  text-decoration: none;
+}
+
+.t-crd-actions i::before {
+  color: #3d4896;
+}
+
+#t-crd-complete:hover i::before {
+  color: var(--success);
+}
+
+#t-crd-edit:hover i::before {
+  color: var(--orange);
+}
+
+#t-crd-delete:hover i::before {
+  color: var(--danger);
 }
 
 /* Button CSS */
