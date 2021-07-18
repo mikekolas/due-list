@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\ToDoList;
 use Illuminate\Support\Facades\Response;
 use App\Http\Requests\ToDoListRequest;
+use Illuminate\Http\RedirectResponse;
 
 class ToDoListController extends Controller
 {
@@ -37,7 +38,7 @@ class ToDoListController extends Controller
         // return response([
         //     'data' => $toDoLists
         // ], 200);
-        return view('lists');
+        return view('lists.index');
     } 
 
     /**
@@ -47,7 +48,7 @@ class ToDoListController extends Controller
      */
     public function create()
     {
-        //
+        return view('lists.create');
     }
 
     /**
@@ -60,18 +61,19 @@ class ToDoListController extends Controller
     {
         //validate user's input inside Form Request Class
         $validatedData = $request->validated();
-        var_dump($validatedData);
-
+        $validatedData["userID"] = auth()->id(); //TO DO check if this is correct
         $toDoList = ToDoList::create($validatedData);
+        
+        // if(!$toDoList) {
+        //     return response([
+        //         'error' => 'Internal server error'
+        //     ], 500);
+        // }
+        // return response([
+        //     'toDoList' => $validatedData['title']
+        // ], 201);
 
-        if(!$toDoList) {
-            return response([
-                'error' => 'Internal server error'
-            ], 500);
-        }
-        return response([
-            'toDoList' => $validatedData['title']
-        ], 201);
+        return redirect()->route('lists.index');
     }
 
     /**

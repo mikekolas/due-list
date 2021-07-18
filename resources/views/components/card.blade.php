@@ -6,7 +6,7 @@
             <div class="row px-3">
                 <div class="col">
                     <label for="title">{{ __('Title*') }}</label>
-                    <input id="title" class="form-control" type="text" required>
+                    <input id="title" name="title" class="form-control" type="text" required>
                 </div>
                 @if (Route::has('tasks')) <!-- to be done tasks -->
                     <div class="col">

@@ -13,7 +13,7 @@ class ToDoList extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['title'];
+    protected $fillable = ['title', 'userID'];
 
     //or true (optional)
     //protected $timestamps = false;
