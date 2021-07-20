@@ -12,9 +12,9 @@ class Card extends Component
     public $action;
 
     /**
-     * @var string
+     * @var object
      */
-    public $title;
+    public $object;
 
     /**
      * @var string
@@ -26,11 +26,11 @@ class Card extends Component
      *
      * @return void
      */
-    public function __construct($action, $type, $title = null)
+    public function __construct($action, $type, $object = null)
     {
         $this->action = $action;
         $this->type = $type;
-        $this->title = $title; 
+        $this->object = $object; 
     }
 
     /**

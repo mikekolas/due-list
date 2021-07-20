@@ -12,15 +12,6 @@ use App\Http\Requests\ToDoListRequest;
 
 class ToDoListController extends Controller
 {
-    // public function index()
-    // {
-    //     $toDoLists = DB::table('to_do_lists')
-    //         ->select('title')
-    //         ->get();
-    //     dd($toDoLists);
-    // }
-
-    
     /**
      * Display a listing of the resource.
      *
@@ -74,7 +65,7 @@ class ToDoListController extends Controller
         //     'toDoList' => $validatedData['title']
         // ], 201);
 
-        return redirect()->route('lists.index');
+        return redirect()->route('lists.show', $toDoList->id)->with('message', 'List created successfully!');
     }
 
     /**
@@ -85,7 +76,8 @@ class ToDoListController extends Controller
      */
     public function show($id)
     {
-        //
+        $toDoList = ToDoList::findOrFail($id);
+        return view('lists.show', $toDoList);
     }
 
     /**
@@ -96,7 +88,8 @@ class ToDoListController extends Controller
      */
     public function edit($id)
     {
-        //
+        $toDoList = ToDoList::findOrFail($id);
+        return view('lists.edit')->with('toDoList', $toDoList);
     }
 
     /**
@@ -110,10 +103,11 @@ class ToDoListController extends Controller
     {
         //validate user's input inside Form Request Class
         $validatedData = $request->validated();
+        // var_dump($validatedData);
+        $toDoList = ToDoList::where('id', $id)
+                        ->update($validatedData);
         
-        return response([
-            'toDoList' => $toDoLists
-        ], 201);
+        return redirect()->route('lists.show', $id)->with('message', 'List updated successfully!');
     }
 
     /**
@@ -124,6 +118,8 @@ class ToDoListController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ToDoList::destroy($id);
+
+        return redirect()->route('lists.index'); //TODO message
     }
 }

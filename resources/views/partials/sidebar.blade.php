@@ -20,32 +20,21 @@
                 @endif
             @else
             {{-- connected user --}}
-                {{-- <a class="nav-link {{ Route::is('home') ? 'active' : ''}}" href="#">Active</a>
-                @foreach ($lists as $list )
-                    <a class="nav-link d-flex align-items-baseline" href="#">
-                        <i class="bi bi-clipboard pr-3"></i>{{ $list->title }}
-                        <i class="bi bi-pencil-fill ml-auto crud-sm"></i>
-                        <i class="bi bi-trash ml-2 text-danger crud-sm"></i>
-                    </a>    
-                @endforeach
-                <a class="nav-link {{ Route::is('lists.create') ? 'active' : ''}}" href="{{ route('lists.create') }}">
-                    <i class="bi bi-clipboard-plus pr-3"></i>New list
-                </a> --}}
                 <x-modal title="test" id="2"/>
                 @foreach ($lists as $list )
-                    <div class="nav-link row d-flex align-items-baseline flex-nowrap{{ Route::is('lists.show', $list->id) ? 'active' : ''}}">
+                    <div class="nav-link row d-flex align-items-baseline flex-nowrap {{ Request::is('lists/' . $list->id) ? 'active' : ''}}">
                         <a class="flex-grow-1" href="{{ route('lists.show', $list->id) }}">
                             <i class="bi bi-clipboard pr-3"></i>{{ $list->title }}
                         </a>
                         <a class="ml-auto t-crd-edit" href="{{ route('lists.edit', $list->id) }}">
-                            <i class="bi bi-pencil-square p-1 mx-1 crud-sm"></i>
+                            <i class="bi bi-pencil-square p-1 mx-1"></i>
                         </a>
                         <a class="ml-auto t-crd-delete" data-toggle="modal" data-target="#deleteModal" data-title="{{ $list->title }}" data-id="{{ $list->id }}" href="">
-                            <i class="bi bi-x-square-fill p-1 mx-1 crud-sm"></i>
+                            <i class="bi bi-x-square-fill p-1 mx-1"></i>
                         </a>
                     </div>
                 @endforeach
-                <div class="nav-link row {{ Route::is('lists.create') ? 'active' : ''}}">
+                <div class="nav-link row d-flex {{ Route::is('lists.create') ? 'active' : ''}}">
                     <a class="flex-grow-1" href="{{ route('lists.create') }}">
                         <i class="bi bi-clipboard-plus pr-3"></i>New list
                     </a>

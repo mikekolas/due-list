@@ -13,7 +13,7 @@
                     </ul>
                 </div>
             @endif
-            <x-card action="create" type="list"></x-card>
+            <x-card action="edit" type="list" :object="$toDoList"/>
         </div>
     </div>
 </div>

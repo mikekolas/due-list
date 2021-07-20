@@ -49,6 +49,10 @@
   padding-left: 1.7rem;
 }
 
+.nav-link > a {
+  color: var(--light);
+}
+
 .nav-link.active > a {
   color: #21264F;
   display: flex;
@@ -78,11 +82,6 @@
   border-radius: 8px;
   background-color: #00B6FC;
   align-self: center;
-}
-
-.crud-sm {
-  /* font-size: .85rem; */
-  color: var(--light);
 }
 
 /* Card component CSS */
