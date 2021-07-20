@@ -83,7 +83,7 @@
             <!-- Left sidebar -->
             @include('partials.sidebar')
             <!-- Main page -->
-            <div class="col bg-light">
+            <div class="col bg-light bx-shadow-sidebar">
                 <main class="py-4">
                     @yield('content')
                 </main>
