@@ -6,18 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\ToDoList;
 use Illuminate\Support\Facades\Response;
+use App\Http\Requests\ToDoListRequest;
+
+// use Illuminate\Http\RedirectResponse;
 
 class ToDoListController extends Controller
 {
-    // public function index()
-    // {
-    //     $toDoLists = DB::table('to_do_lists')
-    //         ->select('title')
-    //         ->get();
-    //     dd($toDoLists);
-    // }
-
-    
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +30,7 @@ class ToDoListController extends Controller
         // return response([
         //     'data' => $toDoLists
         // ], 200);
-        return view('lists');
+        return view('lists.index');
     } 
 
     /**
@@ -46,18 +40,32 @@ class ToDoListController extends Controller
      */
     public function create()
     {
-        //
+        return view('lists.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\ToDoListRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ToDoListRequest $request)
     {
-        //
+        //validate user's input inside Form Request Class
+        $validatedData = $request->validated();
+        $validatedData["userID"] = auth()->id(); //TO DO check if this is correct
+        $toDoList = ToDoList::create($validatedData);
+        
+        // if(!$toDoList) {
+        //     return response([
+        //         'error' => 'Internal server error'
+        //     ], 500);
+        // }
+        // return response([
+        //     'toDoList' => $validatedData['title']
+        // ], 201);
+
+        return redirect()->route('lists.show', $toDoList->id)->with('message', 'List created successfully!');
     }
 
     /**
@@ -68,7 +76,8 @@ class ToDoListController extends Controller
      */
     public function show($id)
     {
-        //
+        $toDoList = ToDoList::findOrFail($id);
+        return view('lists.show', $toDoList);
     }
 
     /**
@@ -79,19 +88,26 @@ class ToDoListController extends Controller
      */
     public function edit($id)
     {
-        //
+        $toDoList = ToDoList::findOrFail($id);
+        return view('lists.edit')->with('toDoList', $toDoList);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\ToDoListRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ToDoListRequest $request, $id)
     {
-        //
+        //validate user's input inside Form Request Class
+        $validatedData = $request->validated();
+        // var_dump($validatedData);
+        $toDoList = ToDoList::where('id', $id)
+                        ->update($validatedData);
+        
+        return redirect()->route('lists.show', $id)->with('message', 'List updated successfully!');
     }
 
     /**
@@ -102,6 +118,8 @@ class ToDoListController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ToDoList::destroy($id);
+
+        return redirect()->route('lists.index'); //TODO message
     }
 }

@@ -13,6 +13,13 @@ class ToDoList extends Model
 
     protected $primaryKey = 'id';
 
+    protected $fillable = ['title', 'userID'];
+
     //or true (optional)
     //protected $timestamps = false;
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }

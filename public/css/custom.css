@@ -35,31 +35,46 @@
   background-image: linear-gradient(to right,#21264F, #281C39);  
   padding-right: 0;
   padding-left: 0;
-  border-right: 2px solid #ddd;
 }
 
-.nav-link {
+.bx-shadow-sidebar {
+  box-shadow: inset 20px 0px 13px -20px rgb(0 0 0 / 15%);
+}
+
+.nav-link > a:first-child {
   color: var(--light);
-  padding-left: 1.7rem;
   font-size: 1.1rem;
   font-weight: bold;
+  text-decoration: none;
+  padding-left: 1.7rem;
+}
+
+.nav-link > a {
+  color: var(--light);
+}
+
+.nav-link.active > a {
+  color: #21264F;
+  display: flex;
 }
 
 .nav-link.active {
-  color: #21264F;
   background-color: var(--light);
   position: relative;
   display: flex;
 }
 
-.nav-link:hover, .nav-link.active:hover {
-  color: var(--light);
+.nav-link:hover {
   background-image: linear-gradient(to right,#3d4896, #7450a7);
 }
 
-.nav-link.active::before {
+.nav-link.active:hover > a {
+  color: var(--light);
+}
+
+.nav-link.active > a::before {
   width: 0.3rem;
-  margin-left: 0.9rem;
+  margin-left: 1.7rem;
   height: 50%;
   position: absolute;
   left: 0; 
@@ -69,22 +84,24 @@
   align-self: center;
 }
 
-.crud-sm {
-  font-size: 0.85rem;
-}
-
 /* Card component CSS */
 .crd, .crd-wdgt, .t-crd {
   background-color: white;
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
 }
+
 .crd .c-body {
   padding: 1rem;
 }
+
 .c-body label {
   font-size: 1rem;
   font-weight: bold;
+}
+
+.modal-dialog > .crd {
+  pointer-events: auto;
 }
 
 /* Card Widget component SS */
@@ -135,11 +152,11 @@
   color: var(--success);
 }
 
-#t-crd-edit:hover i::before {
+.t-crd-edit:hover i::before {
   color: var(--orange);
 }
 
-#t-crd-delete:hover i::before {
+.t-crd-delete:hover i::before {
   color: var(--danger);
 }
 
