@@ -13,14 +13,16 @@
             <div class="row px-3">
                 <div class="col">
                     <label for="title">{{ __('Title*') }}</label>
-                    <input id="title" name="title" class="form-control" type="text" value="{{ Request::is('lists/*/edit') ? $object->title : ''}}" required>
+                    <input id="title" name="title" class="form-control" type="text" value="{{ Request::is('*/*/edit') ? $object->title : ''}}" required>
                 </div>
-                @if (Route::is('lists.show'))
+                @if (Route::is('lists.show') || Request::is('tasks/*/edit'))
                     <div class="col">
                         <label for="due-date">{{ __('Due date') }}</label>
-                        <input id="due-date" name="dueDate" class="form-control" type="date">
+                        <input id="due-date" name="dueDate" class="form-control" type="date" value="{{ Request::is('tasks/*/edit') ? $object->dueDate : '' }}">
                     </div>
-                    <input id="listID" name="listID" value="{{ $object->id }}" type="hidden">
+                    @if (Route::is('lists.show'))
+                        <input id="listID" name="listID" value="{{ $object->id }}" type="hidden">
+                    @endif    
                 @endif
             </div>
             <div class="row px-3 mt-3">

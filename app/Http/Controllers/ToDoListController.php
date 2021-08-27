@@ -103,7 +103,6 @@ class ToDoListController extends Controller
     {
         //validate user's input inside Form Request Class
         $validatedData = $request->validated();
-        // var_dump($validatedData);
         $toDoList = ToDoList::where('id', $id)
                         ->update($validatedData);
         
