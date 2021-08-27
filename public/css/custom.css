@@ -152,6 +152,10 @@
   color: var(--success);
 }
 
+.t-completed i::before {
+  color: var(--success);
+}
+
 .t-crd-edit:hover i::before {
   color: var(--orange);
 }

@@ -100,6 +100,24 @@ class TaskController extends Controller
     }
 
     /**
+     * Update task's status in storage.
+     *
+     * @param  int $id
+     * @param  bool  $status
+     * @return \Illuminate\Http\Response
+     */
+    public function updateStatus($id, $status)
+    {
+        $status = !$status;
+        $task = Task::where('id', $id)
+                    ->update([
+                        'status' => $status
+                    ]);
+
+        return redirect()->route('lists.show', $this->findListID($id))->with('message', 'Task status updated successfully!');
+    }
+
+    /**
      * Find the list ID in which the task belongs to
      * 
      * @param int $id

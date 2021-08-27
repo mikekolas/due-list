@@ -4,7 +4,7 @@
         <div class="font-weight-bold">{{ $title }}</div>
         <div class="t-crd-due-date ml-5">{{ $dueDate }}</div>
         <div class="t-crd-actions ml-auto">
-            <a href="{{-- route('tasks.update') --}}" id="t-crd-complete" class="px-1">
+            <a href="{{ route('tasks.updateStatus', ['id' => $taskID, 'status' => $status]) }}" id="t-crd-complete" class="px-1 {{ $status ? 't-completed' : '' }}">
                 <i class="bi bi-check-square-fill"></i>
             </a>
             <a href="{{ route('tasks.edit', $taskID) }}" class="px-1 t-crd-edit">
@@ -15,13 +15,4 @@
             </a>
         </div>
     </div>
-    {{-- <form method="POST" action="{{ route('lists.store') }}">
-        @csrf
-        <div class="row px-3">
-            <div class="col">
-                <label for="title">{{ __('Title*') }}</label>
-                <input id="title" class="form-control" type="text" required>
-            </div>
-        </div>
-    </form> --}}
 </div>

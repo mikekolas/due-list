@@ -12,12 +12,12 @@ class TaskCard extends Component
     public $title;
 
     /**
-     * @var boolean
+     * @var bool
      */
     public $status;
 
     /**
-     * @var integer
+     * @var int
      */
     public $taskID;
     
