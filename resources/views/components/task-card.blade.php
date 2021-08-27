@@ -10,7 +10,7 @@
             <a href="{{-- route('tasks.show') --}}" id="t-crd-edit" class="px-1">
                 <i class="bi bi-pencil-square"></i>
             </a>
-            <a href="{{-- route('tasks.destroy') --}}" id="t-crd-delete" class="px-1">
+            <a href="{{-- route('tasks.destroy') --}}" class="px-1 t-crd-delete" data-toggle="modal" data-target="#deleteModal" data-title="{{ $title }}" data-id="{{ $taskID }}" data-type="task">
                 <i class="bi bi-x-square-fill"></i>
             </a>
         </div>

@@ -77,7 +77,7 @@ class ToDoListController extends Controller
     public function show($id)
     {
         $toDoList = ToDoList::findOrFail($id);
-        return view('lists.show', $toDoList);
+        return view('lists.show')->with('toDoList', $toDoList); // TO DO check if paramaeter is needed(show',$toDoList)
     }
 
     /**

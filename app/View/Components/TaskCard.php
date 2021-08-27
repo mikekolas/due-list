@@ -17,6 +17,11 @@ class TaskCard extends Component
     public $status;
 
     /**
+     * @var integer
+     */
+    public $taskID;
+    
+    /**
      * @var datetime
      */
     public $dueDate;
@@ -26,10 +31,11 @@ class TaskCard extends Component
      *
      * @return void
      */
-    public function __construct($title, $status, $dueDate = null)
+    public function __construct($title, $status, $taskID, $dueDate = null)
     {
         $this->title = $title;
         $this->status = $status;
+        $this->taskID = $taskID;
         $this->dueDate = $dueDate;
     }
 
