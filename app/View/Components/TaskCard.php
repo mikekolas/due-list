@@ -12,10 +12,15 @@ class TaskCard extends Component
     public $title;
 
     /**
-     * @var boolean
+     * @var bool
      */
     public $status;
 
+    /**
+     * @var int
+     */
+    public $taskID;
+    
     /**
      * @var datetime
      */
@@ -26,10 +31,11 @@ class TaskCard extends Component
      *
      * @return void
      */
-    public function __construct($title, $status, $dueDate = null)
+    public function __construct($title, $status, $taskID, $dueDate = null)
     {
         $this->title = $title;
         $this->status = $status;
+        $this->taskID = $taskID;
         $this->dueDate = $dueDate;
     }
 

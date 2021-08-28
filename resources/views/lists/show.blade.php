@@ -24,16 +24,18 @@
             </x-cardWidget>
         </div>
     </div>
-    <div class="row justify-content-center">
+    <div class="row mb-5 justify-content-center">
         <div class="col-md">
-            <x-card action="create" type="list"></x-card> {{-- TODO :title --}}
+            <x-card action="create" type="task" :object="$toDoList"></x-card> {{-- TODO :title --}}
         </div>
     </div>
     {{-- Selected list tasks --}}
-    <div class="row mt-5 justify-content-center">
-        <div class="col">
-            <x-task-card title="Taskname" status="1" dueDate="10-07-2021"></x-task-card>
+    @foreach ($tasks as $task)
+        <div class="row mt-3 justify-content-center">
+            <div class="col">
+                <x-task-card :title="$task->title" :status="$task->status" :taskID="$task->id" :dueDate="$task->dueDate"></x-task-card>
+            </div>
         </div>
-    </div>
+    @endforeach
 </div>
 @endsection

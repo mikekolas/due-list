@@ -1,7 +1,11 @@
 <div class="crd">
     {{-- <div class="c-header">{{ $title }}</div> --}}
     <div class="c-body">
+    @if($type == 'list')
         <form method="POST" action="{{ $action == 'create' ? route('lists.store') : route('lists.update', $object->id)}}">
+    @elseif ($type == 'task')
+        <form method="POST" action="{{ $action == 'create' ? route('tasks.store') : route('tasks.update', $object->id)}}">
+    @endif
             @csrf
             @if ($action == 'edit')
                 @method('PATCH')    
@@ -9,13 +13,16 @@
             <div class="row px-3">
                 <div class="col">
                     <label for="title">{{ __('Title*') }}</label>
-                    <input id="title" name="title" class="form-control" type="text" value="{{ Request::is('lists/*/edit') ? $object->title : ''}}" required>
+                    <input id="title" name="title" class="form-control" type="text" value="{{ Request::is('*/*/edit') ? $object->title : ''}}" required>
                 </div>
-                @if (Route::has('tasks')) <!-- to be done tasks -->
+                @if (Route::is('lists.show') || Request::is('tasks/*/edit'))
                     <div class="col">
                         <label for="due-date">{{ __('Due date') }}</label>
-                        <input id="due-date" class="form-control" type="date">
+                        <input id="due-date" name="dueDate" class="form-control" type="date" value="{{ Request::is('tasks/*/edit') ? $object->dueDate : '' }}">
                     </div>
+                    @if (Route::is('lists.show'))
+                        <input id="listID" name="listID" value="{{ $object->id }}" type="hidden">
+                    @endif    
                 @endif
             </div>
             <div class="row px-3 mt-3">

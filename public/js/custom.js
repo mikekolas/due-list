@@ -5,7 +5,12 @@ $('#deleteModal').on('show.bs.modal', function(e) {
 	var title = link.data('title');
 	var id = link.data('id');
 	modal.find('.mdl-title').text('Are you sure you want to delete: ' + title + '?');
-	modal.find('form').attr('action', document.location.origin +'/lists/' + id);
+	if(link.data('type') == 'task') {
+		modal.find('form').attr('action', document.location.origin +'/tasks/' + id);
+	}
+	else {
+		modal.find('form').attr('action', document.location.origin +'/lists/' + id);
+	}
 });
 
 // Set sidebar active page color variation 

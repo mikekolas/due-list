@@ -13,10 +13,9 @@ class Task extends Model
 
     protected $primaryKey = 'id';
 
-    //possible status
-    protected $fillable = ['title', 'dueDate'];
+    protected $fillable = ['title', 'dueDate', 'listID', 'status'];
 
-    //A task model belongs to a list
+    // A task model belongs to a list
     public function toDoList()
     {
         return $this->belongsTo(ToDoList::class);

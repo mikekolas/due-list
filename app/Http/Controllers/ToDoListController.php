@@ -77,7 +77,7 @@ class ToDoListController extends Controller
     public function show($id)
     {
         $toDoList = ToDoList::findOrFail($id);
-        return view('lists.show', $toDoList);
+        return view('lists.show')->with('toDoList', $toDoList); // TO DO check if paramaeter is needed(show',$toDoList)
     }
 
     /**
@@ -103,7 +103,6 @@ class ToDoListController extends Controller
     {
         //validate user's input inside Form Request Class
         $validatedData = $request->validated();
-        // var_dump($validatedData);
         $toDoList = ToDoList::where('id', $id)
                         ->update($validatedData);
         
