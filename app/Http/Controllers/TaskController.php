@@ -109,9 +109,9 @@ class TaskController extends Controller
     {   
         $validatedData = $request->validate([
             'id' => 'required|integer',
-            'status' => 'required|boolean'
+            'status' => 'required|bool'
         ]);
-        
+
         $task = Task::where('id', $request->id)
                     ->update([
                         'status' => (bool) !$request->status
