@@ -40,7 +40,7 @@ class TaskController extends Controller
     {
         //validate user's input inside Task Request class
         $validatedData = $request->validated();
-        $validatedData["status"] = 0; // TO DO default value 0 -- edit table tasks.
+        $validatedData["status"] = false; // TO DO default value 0 -- edit table tasks.
         $task = Task::create($validatedData);
 
         return redirect()->route('lists.show', $validatedData["listID"])->with('message', 'Task created successfully!');
@@ -107,8 +107,11 @@ class TaskController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function updateStatus($id, $status)
-    {
-        $status = !$status;
+    {   
+        $status = (bool) !$status;
+        // var_dump(gettype($status));
+        // var_dump($status);
+        // die();
         $task = Task::where('id', $id)
                     ->update([
                         'status' => $status
