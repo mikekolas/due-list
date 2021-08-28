@@ -102,22 +102,17 @@ class TaskController extends Controller
     /**
      * Update task's status in storage.
      *
-     * @param  int $id
-     * @param  bool  $status
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function updateStatus($id, $status)
+    public function updateStatus(Request $request)
     {   
-        $status = (bool) !$status;
-        // var_dump(gettype($status));
-        // var_dump($status);
-        // die();
-        $task = Task::where('id', $id)
+        $task = Task::where('id', $request->id)
                     ->update([
-                        'status' => $status
+                        'status' => (bool) !$request->status
                     ]);
 
-        return redirect()->route('lists.show', $this->findListID($id))->with('message', 'Task status updated successfully!');
+        return redirect()->route('lists.show', $this->findListID($request->id))->with('message', 'Task status updated successfully!');
     }
 
     /**
