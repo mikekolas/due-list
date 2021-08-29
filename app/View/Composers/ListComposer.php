@@ -15,8 +15,18 @@ class ListComposer
      */
     public function compose(View $view) {
         $tasks = Task::where('listID', $view->toDoList->id)->get();
+        // $completedTasks = Task::where()->count();
+        $tasksCompleted = 0;
+        $tasksOverdue = 0;
+        foreach ($tasks as $task) {
+            if($task->status) $tasksCompleted++;
+            if(today()->format('Y-m-d') > $task->dueDate && $task->dueDate != NULL) $tasksOverdue++;
+        }
 
-        // TO DO mechanism when listID is missing
-        $view->with('tasks', $tasks);
+        $view->with([
+            'tasks' => $tasks,
+            'tasksCompleted' => $tasksCompleted,
+            'tasksOverdue' => $tasksOverdue
+        ]);
     }
 };
