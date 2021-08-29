@@ -136,6 +136,14 @@
   font-weight: bold;
 }
 
+.t-crd-due-date-overdue {
+  color: var(--danger);
+}
+
+.t-crd-due-date-timely {
+  color: #21af5d;
+}
+
 .t-crd-actions {
   font-size: 1.2rem;
 }
@@ -164,6 +172,27 @@
   color: var(--danger);
 }
 
+.task-completed {
+  /* text-decoration-line: line-through; */
+  font-size: 2rem;
+  position: relative;
+}
+
+.task-completed::after {
+  border-bottom: 0.125em solid rgba(255, 0, 0, 0.5);
+  content: "";
+  left: 0;
+  line-height: 1em;
+  margin-top: calc(0.125em / 2 * -1);
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.task {
+  font-size: 0.9rem;
+}
+
 /* Button CSS */
 .dl-btn {
   font-size: 1rem;
@@ -178,3 +207,10 @@
 .dl-btn:hover {
   background-image: linear-gradient(to right,#3d4896, #7450a7);
 }
+
+/* 404 font */
+#not-found-font {
+  color: #3d4896;
+  font-size: 5rem;
+}
+
