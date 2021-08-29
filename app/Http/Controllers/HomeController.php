@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $toDoLists = ToDoList::where('userId', auth()->id())->get();
+        $toDoLists = ToDoList::where('userID', auth()->id())->get();
         $totalTasks = 0;
         $totalCompletedTasks = 0;
         foreach ($toDoLists as $toDoList) {
