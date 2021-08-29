@@ -65,7 +65,7 @@ class ToDoListController extends Controller
         //     'toDoList' => $validatedData['title']
         // ], 201);
 
-        return redirect()->route('lists.show', $toDoList->id)->with('message', 'List created successfully!');
+        return redirect()->route('lists.show', $toDoList->id)->with('message', 'List created successfully!')->with('type', 'success');
     }
 
     /**
@@ -106,7 +106,7 @@ class ToDoListController extends Controller
         $toDoList = ToDoList::where('id', $id)
                         ->update($validatedData);
         
-        return redirect()->route('lists.show', $id)->with('message', 'List updated successfully!');
+        return redirect()->route('lists.show', $id)->with('message', 'List updated successfully!')->with('type', 'success');
     }
 
     /**

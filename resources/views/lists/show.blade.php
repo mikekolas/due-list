@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    @if (session()->has('message'))
-        <div class="alert alert-success alert-dismissible fade show">
+    @if (session()->has('message') && session()->has('type'))
+        <div class="alert alert-{{ session()->get('type') }} alert-dismissible fade show">
             <ul>
                 <li>{{ session()->get('message') }}</li>
             </ul>

@@ -43,7 +43,7 @@ class TaskController extends Controller
         $validatedData["status"] = false; // TO DO default value 0 -- edit table tasks.
         $task = Task::create($validatedData);
 
-        return redirect()->route('lists.show', $validatedData["listID"])->with('message', 'Task created successfully!');
+        return redirect()->route('lists.show', $validatedData["listID"])->with('message', 'Task created successfully!')->with('type', 'success');
     }
 
     /**
@@ -83,7 +83,7 @@ class TaskController extends Controller
         $task = Task::where('id', $id)
                     ->update($validatedData);
 
-        return redirect()->route('lists.show', $this->findListID($id))->with('message', 'Task updated successfully!');
+        return redirect()->route('lists.show', $this->findListID($id))->with('message', 'Task updated successfully!')->with('type', 'success');
     }
 
     /**
@@ -96,30 +96,26 @@ class TaskController extends Controller
     {
         $listID = $this->findListID($id);
         Task::destroy($id);
-        return redirect()->route('lists.show',  $listID)->with('message', 'Task deleted successfully!'); //TODO message
+        return redirect()->route('lists.show',  $listID)->with('message', 'Task deleted successfully!')->with('type', 'success');
     }
 
     /**
      * Update task's status in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function updateStatus(Request $request)
-    {   
-        
-        $request->status = (bool) $request->status;
-        $validatedData = $request->validate([
-            'id' => 'required|integer',
-            'status' => 'required|boolean'
-        ]);
-        
-        $task = Task::where('id', $request->id)
-                    ->update([
-                        'status' => (bool) !$request->status
-                    ]);
-
-        return redirect()->route('lists.show', $this->findListID($request->id))->with('message', 'Task status updated successfully!');
+    public function updateStatus($id)
+    {           
+        $task = Task::findOrFail($id);
+        if ($task) {
+            $task->status = !$task->status;
+            $task->save();
+            return redirect()->route('lists.show', $this->findListID($id))->with('message', 'Task status updated successfully!')->with('type', 'success');
+        } 
+        // else {
+        //     return redirect()->route('lists.show', $this->findListID($id))->with('message', 'Task was not found!')->with('type', 'danger');
+        // }        
     }
 
     /**
