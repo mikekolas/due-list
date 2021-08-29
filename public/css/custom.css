@@ -214,3 +214,25 @@
   font-size: 5rem;
 }
 
+/* home card */
+
+.home-completed-tasks {
+  color: #3d4896;
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+.home-total-tasks-text {
+  font-size: .8rem;
+  font-weight: bold;
+}
+
+.home-total-tasks {
+  font-size: .9rem;
+  font-weight: bold;
+}
+
+/* progress bar */
+.prg-style {
+  height: .4rem;
+}

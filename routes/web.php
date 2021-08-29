@@ -16,18 +16,18 @@ use App\Http\Controllers\TaskController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-// Route::get('/', [ToDoListController::class, 'index']);
-// Or this
-// Route::get('/lists', 'App\Http\Controllers\ListController@index');
+Route::middleware(['auth'])->group(function () {
+    Route::resource('/lists', ToDoListController::class);
+    Route::resource('/tasks', TaskController::class);
+    Route::get('/tasks/{id}/status', 'App\Http\Controllers\TaskController@updateStatus')
+        ->name('tasks.updateStatus')
+        ->where('id', '[0-9]+');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
 
-Route::resource('/lists', ToDoListController::class);
-Route::resource('/tasks', TaskController::class);
-Route::get('/tasks/{id}/status', 'App\Http\Controllers\TaskController@updateStatus')
-    ->name('tasks.updateStatus')
-    ->where('id', '[0-9]+');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

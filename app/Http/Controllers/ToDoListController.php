@@ -119,6 +119,6 @@ class ToDoListController extends Controller
     {
         ToDoList::destroy($id);
 
-        return redirect()->route('lists.index'); //TODO message
+        return redirect()->route('home'); //TODO message
     }
 }

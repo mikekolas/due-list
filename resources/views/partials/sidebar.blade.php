@@ -1,5 +1,7 @@
 <div class="col-3 bg-sidebar">
-    <h1 id="app-name">Due List</h1>
+    <h1 id="app-name">
+        <a href="{{ route('home') }}">Due List</a>
+        </h1>
     <div>
         <nav class="nav flex-column pt-3 pb-3 border-top">
             <!-- Guest menu links -->
@@ -43,12 +45,12 @@
         </nav>
         @auth
             <nav class="nav flex-column pt-3 border-top">
-                <div class="nav-link row d-flex {{ Route::is('profile') ? 'active' : ''}}">
+                {{-- <div class="nav-link row d-flex {{ Route::is('profile') ? 'active' : ''}}">
                     <a class="flex-grow-1" href="#">
                         <i class="bi bi-person-circle pr-3"></i>Profile
                     </a>
-                </div>
-                <div class="nav-link row d-flex {{ Route::is('profile') ? 'active' : ''}}">
+                </div> --}}
+                <div class="nav-link row d-flex">
                     <a class="flex-grow-1" href="{{ route('logout') }}" 
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">

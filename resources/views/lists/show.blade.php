@@ -13,12 +13,12 @@
         </div>
     @endif
     <div class="row">
-        <div class="col-xl-3 col-lg-6">
+        <div class="col-xl-6 col-lg-6">
             <x-cardWidget title="Tasks completed" :total="$tasksCompleted" color="success" icon="bi-check-circle-fill">
 
             </x-cardWidget>
         </div>
-        <div class="col-xl-3 col-lg-6">
+        <div class="col-xl-6 col-lg-6">
             <x-cardWidget title="Tasks overdue" :total="$tasksOverdue" color="danger" icon="bi-clock-fill">
 
             </x-cardWidget>
