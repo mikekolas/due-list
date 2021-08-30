@@ -22,6 +22,11 @@
                 @endif
             @else
             {{-- connected user --}}
+                <div class="nav-link row d-flex {{ Route::is('home') ? 'active' : ''}}">
+                    <a class="flex-grow-1" href="{{ route('home') }}">
+                        <i class="bi bi-house pr-3"></i>Home
+                    </a>
+                </div>
                 <x-modal title="test" id="2"/>
                 @foreach ($lists as $list )
                     <div class="nav-link row d-flex align-items-baseline flex-nowrap {{ Request::is('lists/' . $list->id) ? 'active' : ''}}">

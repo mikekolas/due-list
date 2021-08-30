@@ -26,6 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         $toDoLists = ToDoList::where('userID', auth()->id())->get();
+        // Find total lists that the user has
+        $totalLists = 0;
+        $totalLists = count($toDoLists);            
+        //Find total tasks and total completed tasks the user has
         $totalTasks = 0;
         $totalCompletedTasks = 0;
         foreach ($toDoLists as $toDoList) {
@@ -33,11 +37,19 @@ class HomeController extends Controller
             $totalCompletedTasks += Task::where('listID', $toDoList->id)
                                         ->where('status', true)->count();
         }
+        // Avoid division with 0 problem
+        $tasksPercentage = 0;
+        if ($totalTasks != 0) {
+            $tasksPercentage = round($totalCompletedTasks / $totalTasks, 2) * 100;
+        }
+        
 
         return view('home')->with([
             'username' => auth()->user()->name,
             'totalTasks' => $totalTasks,
-            'totalCompletedTasks' => $totalCompletedTasks
+            'totalCompletedTasks' => $totalCompletedTasks,
+            'tasksPercentage' => $tasksPercentage,
+            'totalLists' => $totalLists
         ]);
     }
 }
