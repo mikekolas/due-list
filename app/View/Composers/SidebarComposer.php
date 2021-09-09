@@ -3,6 +3,7 @@
 namespace App\View\Composers;
 
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
 use App\Models\ToDoList;
 
 class SidebarComposer 
@@ -14,7 +15,9 @@ class SidebarComposer
      * @return void
      */
     public function compose(View $view) {
-        $lists = ToDoList::where('userID', auth()->id())->get();
-        $view->with('lists', $lists);
+        if(Auth::check()) {
+            $lists = ToDoList::where('userID', auth()->id())->get();
+            $view->with('lists', $lists);
+        }     
     }
 };

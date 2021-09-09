@@ -1,7 +1,7 @@
 <div class="col-3 bg-sidebar">
     <h1 id="app-name">
         <a href="{{ route('home') }}">Due List</a>
-        </h1>
+    </h1>
     <div>
         <nav class="nav flex-column pt-3 pb-3 border-top">
             <!-- Guest menu links -->

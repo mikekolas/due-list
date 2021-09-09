@@ -15,11 +15,10 @@ use App\Http\Controllers\TaskController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::get('/', 'App\Http\Controllers\Auth\LoginController@showLoginForm');
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/', 'App\Http\Controllers\HomeController@index');
     Route::resource('/lists', ToDoListController::class);
     Route::resource('/tasks', TaskController::class);
     Route::get('/tasks/{id}/status', 'App\Http\Controllers\TaskController@updateStatus')
