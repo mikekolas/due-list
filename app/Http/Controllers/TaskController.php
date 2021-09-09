@@ -82,7 +82,6 @@ class TaskController extends Controller
         $validatedData = $request->validated();
         $task = Task::where('id', $id)
                     ->update($validatedData);
-
         return redirect()->route('lists.show', $this->findListID($id))->with('message', 'Task updated successfully!')->with('type', 'success');
     }
 
@@ -111,7 +110,7 @@ class TaskController extends Controller
         if ($task) {
             $task->status = !$task->status;
             $task->save();
-            return redirect()->route('lists.show', $this->findListID($id))->with('message', 'Task status updated successfully!')->with('type', 'success');
+            return back()->with('message', 'Task status updated successfully!')->with('type', 'success');
         } 
         // else {
         //     return redirect()->route('lists.show', $this->findListID($id))->with('message', 'Task was not found!')->with('type', 'danger');

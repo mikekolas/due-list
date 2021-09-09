@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\View\Composers\SidebarComposer;
 use App\View\Composers\ListComposer;
 use Illuminate\Support\Facades\View;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
+        
         // View composer to populate sidebar with the user's list
         View::composer('partials.sidebar', SidebarComposer::class);
 

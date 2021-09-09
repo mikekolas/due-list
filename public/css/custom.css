@@ -236,3 +236,20 @@
 .prg-style {
   height: .4rem;
 }
+
+/* pagination */
+.pagination-style > nav > ul {
+  justify-content: center;
+}
+
+.pagination-style li.page-item.active .page-link{
+  background-color: #3d4896;
+  border-color: #3d4896;
+  font-weight: bold;
+}
+
+.pagination-style li.page-item .page-link:hover {
+  background-image: linear-gradient(to right,#3d4896, #7450a7);
+  color: var(--light);
+  font-weight: bold;
+}

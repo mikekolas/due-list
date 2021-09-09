@@ -37,5 +37,9 @@
             </div>
         </div>
     @endforeach
+
+    <div class="pagination-style mt-3">
+        {!! $tasks->links() !!}
+    </div>
 </div>
 @endsection

@@ -14,14 +14,16 @@ class ListComposer
      * @return void
      */
     public function compose(View $view) {
-        $tasks = Task::where('listID', $view->toDoList->id)->get();
-        // $completedTasks = Task::where()->count();
+        $tasks = Task::where('listID', $view->toDoList->id)->paginate(5);
+
         $tasksCompleted = 0;
         $tasksOverdue = 0;
-        foreach ($tasks as $task) {
-            if($task->status) $tasksCompleted++;
-            if(today()->format('Y-m-d') > $task->dueDate && $task->dueDate != NULL) $tasksOverdue++;
-        }
+
+        $tasksCompleted = Task::where('listID', $view->toDoList->id)
+                                ->where('status', true)->count();
+        $tasksOverdue = Task::where('listID', $view->toDoList->id)
+                                ->whereDate('dueDate', '<', today()->format('Y-m-d'))
+                                ->whereNotNull('dueDate')->count();
 
         $view->with([
             'tasks' => $tasks,
